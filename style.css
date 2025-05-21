@@ -1,182 +1,158 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  user-select: none;
 }
-html,body{
-  display: grid;
-  height: 100%;
-  width: 100%;
-  place-items: center;
-  background: -webkit-linear-gradient(left, #8b3c46, #ec9fab);
+.bg-img{
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaSd_r5Mg-jKKT1I-IBbOWxnbA9JGRP3URQQ&s');
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
 }
-::selection{
-  background: #ec9fab;
-  color: #fff;
-}
-.wrapper{
-  overflow: hidden;
-  max-width: 390px;
-  background: #fff;
-  padding: 30px;
-  border-radius: 5px;
-  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
-}
-.wrapper .title-text{
-  display: flex;
-  width: 200%;
-}
-.wrapper .title{
-  width: 50%;
-  font-size: 35px;
-  font-weight: 600;
-  text-align: center;
-  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
-}
-.wrapper .slide-controls{
-  position: relative;
-  display: flex;
-  height: 50px;
-  width: 100%;
-  overflow: hidden;
-  margin: 30px 0 10px 0;
-  justify-content: space-between;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-}
-.slide-controls .slide{
-  height: 100%;
-  width: 100%;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  text-align: center;
-  line-height: 48px;
-  cursor: pointer;
-  z-index: 1;
-  transition: all 0.6s ease;
-}
-.slide-controls label.signup{
-  color: #000;
-}
-.slide-controls .slider-tab{
+.bg-img:after{
   position: absolute;
+  content: '';
+  top: 0;
+  left: 100%;
   height: 100%;
-  width: 50%;
-  left: 0;
-  z-index: 0;
-  border-radius: 5px;
-  background: -webkit-linear-gradient(left, #8b3c46, #ec9fab);
-  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+  width: 100%;
+  background: rgba(0,0,0,0.7);
 }
-input[type="radio"]{
-  display: none;
-}
-#signup:checked ~ .slider-tab{
+.content{
+  position: absolute;
+  top: 50%;
   left: 50%;
+  z-index: 999;
+  text-align: center;
+  padding: 60px 32px;
+  width: 370px;
+  transform: translate(-50%,-50%);
+  background: rgba(255,255,255,0.04);
+  box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
 }
-#signup:checked ~ label.signup{
-  color: #fff;
-  cursor: default;
-  user-select: none;
+.content header{
+  color: white;
+  font-size: 33px;
+  font-weight: 600;
+  margin: 0 0 35px 0;
+  font-family: 'Montserrat',sans-serif;
 }
-#signup:checked ~ label.login{
-  color: #000;
-}
-#login:checked ~ label.signup{
-  color: #000;
-}
-#login:checked ~ label.login{
-  cursor: default;
-  user-select: none;
-}
-.wrapper .form-container{
+.field{
+  position: relative;
+  height: 45px;
   width: 100%;
-  overflow: hidden;
-}
-.form-container .form-inner{
   display: flex;
-  width: 200%;
+  background: rgba(255,255,255,0.94);
 }
-.form-container .form-inner form{
-  width: 50%;
-  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+.field span{
+  color: #222;
+  width: 40px;
+  line-height: 45px;
 }
-.form-inner form .field{
-  height: 50px;
-  width: 100%;
-  margin-top: 20px;
-}
-.form-inner form .field input{
+.field input{
   height: 100%;
   width: 100%;
+  background: transparent;
+  border: none;
   outline: none;
-  padding-left: 15px;
-  border-radius: 5px;
-  border: 1px solid lightgrey;
-  border-bottom-width: 2px;
-  font-size: 17px;
-  transition: all 0.3s ease;
+  color: #222;
+  font-size: 16px;
+  font-family: 'Poppins',sans-serif;
 }
-.form-inner form .field input:focus{
-  border-color: #d97e8a;
-  /* box-shadow: inset 0 0 3px #fb6aae; */
+.space{
+  margin-top: 16px;
 }
-.form-inner form .field input::placeholder{
-  color: #999;
-  transition: all 0.3s ease;
+.show{
+  position: absolute;
+  right: 13px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #222;
+  display: none;
+  cursor: pointer;
+  font-family: 'Montserrat',sans-serif;
 }
-form .field input:focus::placeholder{
-  color: #b3b3b3;
+.pass-key:valid ~ .show{
+  display: block;
 }
-.form-inner form .pass-link{
-  margin-top: 5px;
+.pass{
+  text-align: left;
+  margin: 10px 0;
 }
-.form-inner form .signup-link{
-  text-align: center;
-  margin-top: 30px;
-}
-.form-inner form .pass-link a,
-.form-inner form .signup-link a{
-  color: #d97e8a;
+.pass a{
+  color: white;
   text-decoration: none;
+  font-family: 'Poppins',sans-serif;
 }
-.form-inner form .pass-link a:hover,
-.form-inner form .signup-link a:hover{
+.pass:hover a{
   text-decoration: underline;
 }
-form .btn{
-  height: 50px;
-  width: 100%;
-  border-radius: 5px;
-  position: relative;
-  overflow: hidden;
-}
-form .btn .btn-layer{
-  height: 100%;
-  width: 300%;
-  position: absolute;
-  left: -100%;
-  background: -webkit-linear-gradient(right, #8b3c46, #ec9fab, #8b3c46, #ec9fab);
-  border-radius: 5px;
-  transition: all 0.4s ease;;
-}
-form .btn:hover .btn-layer{
-  left: 0;
-}
-form .btn input[type="submit"]{
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-  position: relative;
-  background: none;
-  border: none;
-  color: #fff;
-  padding-left: 0;
-  border-radius: 5px;
-  font-size: 20px;
-  font-weight: 500;
+.field input[type="submit"]{
+  background: #3498db;
+  border: 1px solid #2691d9;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 600;
   cursor: pointer;
+  font-family: 'Montserrat',sans-serif;
+}
+.field input[type="submit"]:hover{
+  background: #2691d9;
+}
+.login{
+  color: white;
+  margin: 20px 0;
+  font-family: 'Poppins',sans-serif;
+}
+.links{
+  display: flex;
+  cursor: pointer;
+  color: white;
+  margin: 0 0 20px 0;
+}
+.facebook,.instagram{
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  margin-left: 10px;
+}
+.facebook{
+  margin-left: 0;
+  background: #4267B2;
+  border: 1px solid #3e61a8;
+}
+.instagram{
+  background: #E1306C;
+  border: 1px solid #df2060;
+}
+.facebook:hover{
+  background: #3e61a8;
+}
+.instagram:hover{
+  background: #df2060;
+}
+.links i{
+  font-size: 17px;
+}
+i span{
+  margin-left: 8px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 16px;
+  font-family: 'Poppins',sans-serif;
+}
+.signup{
+  font-size: 15px;
+  color: white;
+  font-family: 'Poppins',sans-serif;
+}
+.signup a{
+  color: #3498db;
+  text-decoration: none;
+}
+.signup a:hover{
+  text-decoration: underline;
 }
